@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+<body>
+    <!--
+        JSX -> Javascript XML
+
+        1. Luôn dùng React.createElement()? Vấn đề?
+        2. JSX? Live demo: https://bit.ly/2VOIMN7
+        3. JSX không phải là HTML, cần có Javascript, Babel để dùng JSX
+        4. JSX và React-DOM?
+
+    <ul>
+        <li>Javascript</li>
+        <li>ReactjS</li>
+    </ul>
+        
+    -->
+    <div id="root"></div>
+    <script type="text/babel">
+        // const ul = React.createElement(
+        //     'ul',
+        //     null,
+        //     React.createElement('li',null,'Javascript'),
+        //     React.createElement('li',null,'ReactJS')
+        // )
+
+    // const reactCourse = 'ReactJS F8'
+
+    // const ul = <ul>
+    //     <li>Javascript</li>
+    //     <li>ReactjS</li>
+    // </ul>
+
+    const course = [
+        {
+            name: 'HTML, CSS',
+        },
+        {
+            name: 'Reponsice web design',
+        },
+        {
+            name: 'ReactJS',
+        },
+    ]
+
+    const ulDOM = <ul>
+        {course.map((course,index) => {
+            return <li key={index}> {course.name}</li>
+        })}
+    </ul>
+    //1. 
+    console.log(ulDOM);
+
+    const jsx = (
+        <React.Fragment>
+            <h1>Heading 1</h1>   
+            <h1>Heading 2</h1>    
+        </React.Fragment>
+    )
+
+    const jsx1 = React.createElement (
+        React.Fragment,
+        null,
+        React.createElement('h1',null, 'Heading 1'),
+        React.createElement('h2',null, 'Heading 2s')
+    )
+
+
+        //React@17
+        // ReactDOM.render([jsx, ulDOM],document.getElementById('root'))
+
+        //React@18
+        const courseRoot = ReactDOM.createRoot(root)
+        courseRoot.render([ulDOM,jsx])
+    </script>
+
+    <!--
+        Chữa bài tập: Render list khóa học
+
+        * Câu hỏi thường gặp:
+        - Tại sao khi code thuần dùng map phải join()...
+        - Gặp lỗi khi render từ mảng (prop "key")
+        - Không render được 2 elements cùng lúc
+    -->
+</body>
+</html>

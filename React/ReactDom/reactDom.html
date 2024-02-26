@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  </head>
+  <body>
+    <!--
+        1. Tại sao phải sử dụng React-DOM
+        - Là 1 thư viện, cầu nối giữa React và DOM, giúp React tạo element và giúp element đó render vào DOM
+        2. Tại sao lại tách React-DOM ra?
+        - Hồi xưa là chung, 1 thư viện
+        - Nhưng tách ra khiến nó có thể phát triển theo hướng 
+        React - DOM
+        React - Native
+        3. Render UI
+        - 
+        React - Native -> iOS, Android
+        - Là cầu nối giữa React và Native
+    -->
+
+    <div id="root"></div>
+
+    <script>
+      //DOM 7. Tạo
+      const divDOM = document.createElement("div");
+      divDOM.className = "post-item";
+
+      const h2DOM = document.createElement("h2");
+      h2DOM.title = "Học React tại F8";
+      h2DOM.innerText = "Học ReactJS";
+
+      const pDOM = document.createElement("p");
+      pDOM.innerText = "HỌc ReactJS từ cơ bản tới nâng cao";
+
+      divDOM.appendChild(h2DOM);
+      divDOM.appendChild(pDOM);
+
+      document.body.appendChild(divDOM);
+
+      //React
+      const divReact = React.createElement(
+        "div",
+        { className: "post-item" },
+        null,
+        React.createElement("h2", { title: "Học React tại F8" }, "Học ReactJS"),
+        React.createElement("p", null, "Học React từ cơ bản tới nâng cao")
+      );
+      console.log(divReact);
+
+      // Get root element
+      const rootContainer = document.getElementById("root");
+
+      // React-DOM -> render UI
+    //   ReactDOM.render(divReact, root);
+
+      //DOM 5. Tạo
+      const h1React = React.createElement(
+        "h1",
+        { title: "Hello", className: "heading" },
+        "Hello guy!"
+      );
+      console.log(h1React);
+      
+
+      //DOM 6. tạo
+      const ul1React = React.createElement(
+        "ul",
+        null,
+        React.createElement("li", null, "Javascript"),
+        React.createElement("li", null, "ReactJS")
+      );
+      console.log(ul1React);
+      //REact@17 
+      //React - DOM -> render UI
+    //   ReactDOM.render([ul1React, h1React, divReact], root);
+
+        const root = ReactDOM.createRoot(rootContainer)
+        root.render(divReact)
+
+
+
+
+      // In React, when you call ReactDOM.render() multiple times on the same root element, the subsequent calls will replace the content of the root element with the new component
+
+      // If you want to render multiple components together, you should create a parent component that wraps all the elements you want to render, and then render that parent component using ReactDOM.render()
+    //   const ParentComponent = () => {
+    //     return (
+    //       <div>
+    //         {/* divReact component */}
+    //         <div className="post-item">
+    //           <h2 title="Học React tại F8">Học ReactJS</h2>
+    //           <p>Học React từ cơ bản tới nâng cao</p>
+    //         </div>
+
+    //         {/* h1React component */}
+    //         <h1 title="Hello" className="heading">
+    //           Hello guy!
+    //         </h1>
+
+    //         {/* ul1React component */}
+    //         <ul>
+    //           <li>Javascript</li>
+    //           <li>ReactJS</li>
+    //         </ul>
+    //       </div>
+    //     );
+    //   };
+
+    //   // Get root element
+    //   const root = document.getElementById("root");
+
+    //   // Render the ParentComponent
+    //   ReactDOM.render(<ParentComponent />, root);
+    </script>
+  </body>
+</html>
