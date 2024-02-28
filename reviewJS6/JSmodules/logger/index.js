@@ -1,6 +1,6 @@
-// import logger from './logger.js';
+import logger from './logger.js';
 
-// export default logger;
+export default logger;
 
 
-// export { default } from './logger.js';
+export { default } from './logger.js';

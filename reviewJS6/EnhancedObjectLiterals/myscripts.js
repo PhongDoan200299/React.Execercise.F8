@@ -7,18 +7,18 @@
 // var name = 'Javascript';
 // var price = 1000;
 
-// //Kieu cu
-// // var course = {
-// //     name: name,
-// //     price: price
-// // };
+// Kieu cu
+// var course = {
+//     name: name,
+//     price: price
+// };
 
 // var course = {
 //     name,
 //     price, 
-//     getName: function() { 
-//         return name;
-//     }
+   //  getName: function() { 
+   //      return name;
+   //  }
 // };
 
 

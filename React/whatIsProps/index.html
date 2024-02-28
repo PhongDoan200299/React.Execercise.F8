@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        //PostItem.js (Hay còn được gọi là ReactComponent)
+        // function PostItem(props) {
+        //destructuring
+        function PostItem({
+            image,
+            title,
+            description,
+            published,
+            Callback
+            // Callback = () => {}
+
+        }) {
+            // if (typeof props.Callback === 'function')
+            //     props.Callback(Math.random())
+            if (typeof Callback === 'function')
+                Callback(Math.random())
+
+            // console.log(props);
+
+            return (
+                // React Element là các thẻ div, img ,p
+            //     <div className="post-item">
+            //         <label htmlFor="email">Email: </label>
+            //         <input id="email"></input>
+            //         <img src="https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-980x653.jpg" alt={props.title}></img>
+            //         <h2 className="post-title">{props.title}</h2>
+            //         <p className="post-desc">{props.description}</p>
+            //         <p className="post-published">{props.published}</p>    
+            // </div>  
+            <div className="post-item">
+                    <label htmlFor="email">Email: </label>
+                    <input id="email"></input>
+                    <img 
+                    src={image} 
+                    alt={title}
+                    />
+                    <h2 className="post-title">{title}</h2>
+                    <p className="post-desc">{description}</p>
+                    <p className="post-published">{published}</p>    
+            </div>  
+            )
+        }
+
+        //App.js
+        function App(){            
+            return (
+                // THẻ div là React Element
+                //Thẻ PostItem là React Component
+                <div id="wrapper">
+                    <PostItem
+                        title="123C#(.NET) - Tương tác với file Excel"
+                        image="https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-980x653.jpg"
+                        description="123Bạn có kiến thức ngôn ngữ C#! Bạn muốn thực hiện tương tác excel"
+                        published="123Một ngày trước"
+                        data={[{a:1},{b:2}]}
+                        Callback = {(random) => {
+                            console.log('random: ' , random);
+                        }}
+                    />
+                    <PostItem
+                        title="23C#(.NET) - Tương tác với file Excel"
+                        image="https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-980x653.jpg"
+                        description="23Bạn có kiến thức ngôn ngữ C#! Bạn muốn thực hiện tương tác excel"
+                        published="23Một ngày trước"
+                    />
+                    <PostItem
+                        title="3C#(.NET) - Tương tác với file Excel"
+                        image="https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-980x653.jpg"
+                        description="3Bạn có kiến thức ngôn ngữ C#! Bạn muốn thực hiện tương tác excel"
+                        published="3Một ngày trước"
+                    />
+                </div>
+            )
+        }
+
+
+    
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+</html>
